@@ -1,33 +1,64 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
-      <h1 class="title">
-        sanbika
-      </h1>
       <h2 class="subtitle">
-        賛美歌 歌詞コード検索アプリ
+        賛美歌 歌詞コード検索
       </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <el-button @click="visible = true">modal</el-button>
+      <el-dialog 
+        :visible.sync="visible" 
+        title="Hello world"
+      >
+        <p>Try Element</p>
+      </el-dialog>
+      <Search/>
+      <Select/>
+      <el-button type="primary" icon="el-icon-search">Search</el-button>
+      <el-card class="box-card">
+        <nuxt-link to="/">賛美タイトル</nuxt-link> 
+      </el-card>
+      <el-card class="box-card">
+        <nuxt-link to="/">賛美タイトル</nuxt-link> 
+      </el-card>
+      <el-card class="box-card">
+        <nuxt-link to="/">賛美タイトル</nuxt-link> 
+      </el-card>
+      <el-pagination
+        :total="1000"
+        background
+        layout="prev, pager, next"
+      />
+      <el-button :plain="true" @click="open">Show message</el-button>
     </div>
+    
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Search from '~/components/Search'
+import Select from '~/components/Select'
 
 export default {
   components: {
-    Logo
+    Search,
+    Select
+  },
+  data() {
+    return {
+      visible: false
+    }
+  },
+  methods: {
+    open() {
+      this.$message('This is a message.')
+    },
+    error() {
+      this.$notify.error({
+        title: 'Error',
+        message: 'This is an error message',
+        position: 'top-left'
+      })
+    }
   }
 }
 </script>
@@ -41,25 +72,11 @@ export default {
   text-align: center;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
 .subtitle {
   font-weight: 300;
   font-size: 42px;
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

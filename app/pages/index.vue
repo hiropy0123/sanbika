@@ -36,6 +36,7 @@
         class="box-card"
       >
         <h2>{{ song.fields.title }}</h2>
+        <span class="root-key">Root Key：{{ song.fields.keyCode }}</span>
         <vue-markdown
           :source="song.fields.lyrics"
           class="lyrics"

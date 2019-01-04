@@ -17,6 +17,10 @@ export default {
     return {
       options: [
         {
+          value: 'Degree',
+          label: '度数表記（ディグリーネーム）'
+        },
+        {
           value: 'A',
           label: 'A'
         },

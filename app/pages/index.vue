@@ -29,17 +29,32 @@
         layout="prev, pager, next"
       />
       <el-button :plain="true" @click="open">Show message</el-button>
+
+      <el-card 
+        v-for="song in songs" 
+        :key="song.sys.id"
+        class="box-card"
+      >
+        <h2>{{ song.fields.title }}</h2>
+        <vue-markdown
+          :source="song.fields.lyrics"
+          class="lyrics"
+        />
+      </el-card>
     </div>
     
   </section>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
 import Search from '~/components/Search'
 import Select from '~/components/Select'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
+    VueMarkdown,
     Search,
     Select
   },
@@ -47,6 +62,9 @@ export default {
     return {
       visible: false
     }
+  },
+  computed: {
+    ...mapGetters(['songs'])
   },
   methods: {
     open() {

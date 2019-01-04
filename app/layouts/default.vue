@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch('fetchSongs')
+    this.$store.dispatch('fetchTotal')
+  }
+}
+</script>
+
+
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,

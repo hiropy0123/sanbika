@@ -1,3 +1,6 @@
+// https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/
+const CTF_Config = require('./.contentful.json')
+
 module.exports = {
   mode: 'spa',
   srcDir: 'app',
@@ -19,6 +22,16 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+
+  /*
+  ** Contentful
+  */
+  env: {
+    CTF_SPACE_ID: CTF_Config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: CTF_Config.CTF_CDA_ACCESS_TOKEN,
+    CTF_PERSON_ID: CTF_Config.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: CTF_Config.CTF_BLOG_POST_TYPE_ID
+  },
 
   /*
   ** Global CSS

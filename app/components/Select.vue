@@ -101,8 +101,8 @@ export default {
           label: 'Fm'
         },
         {
-          value: 'F#m',
-          label: 'F#m'
+          value: 'F♯m',
+          label: 'F♯m'
         },
         {
           value: 'Gm',

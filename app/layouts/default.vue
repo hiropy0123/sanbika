@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <el-container>
+    <Sidebar/>
+    <el-main>
+      <nuxt/>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
+import Sidebar from '~/components/Sidebar'
+
 export default {
+  components: {
+    Sidebar
+  },
   created() {
     this.$store.dispatch('fetchSongs')
     this.$store.dispatch('fetchTotal')

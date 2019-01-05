@@ -96,7 +96,9 @@ export default {
       } else {
         this.options4 = []
       }
-    }
+    },
+
+    searchByName(keyword) {}
   }
 }
 </script>

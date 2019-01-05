@@ -48,10 +48,12 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import VueMarkdown from 'vue-markdown'
 import Search from '~/components/Search'
 import Select from '~/components/Select'
 import { mapGetters } from 'vuex'
+import { DegreeName, DegMap } from '~/plugins/scale'
 
 export default {
   components: {
@@ -66,6 +68,10 @@ export default {
   },
   computed: {
     ...mapGetters(['songs'])
+  },
+  mounted() {
+    let scale = _.find(DegMap, item => _.includes(item.key, 'D♭'))
+    console.log(scale.map)
   },
   methods: {
     open() {

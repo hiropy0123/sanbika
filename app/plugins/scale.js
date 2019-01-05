@@ -2,9 +2,9 @@
 // DegreeName ベースで管理
 // ルートキーまたは、選択されたキーを元に、DegMapのmapでReplaceする
 
-const DegreeName = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ']
+export const DegreeName = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ']
 
-const DegMap = [
+export const DegMap = [
   {
     key: 'A',
     map: ['A', 'B', 'C♯', 'D', 'E', 'F♯', 'G♯']

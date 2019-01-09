@@ -42,12 +42,24 @@ export default () =>
           })
       },
 
-      async searchSongs({ commit }) {
+      async searchSongsByChord({ commit }, chord) {
         await client
           .getEntries({
             content_type: 'song',
             order: '-sys.createdAt',
-            'fields.keyCode': this.state.selectedKey
+            'fields.keyCode': chord
+          })
+          .then(entries => {
+            commit('setSongs', entries.items)
+          })
+      },
+
+      async searchSongsByTitle({ commit }, keyword) {
+        await client
+          .getEntries({
+            content_type: 'song',
+            order: '-sys.createdAt',
+            'fields.title[match]': keyword
           })
           .then(entries => {
             commit('setSongs', entries.items)

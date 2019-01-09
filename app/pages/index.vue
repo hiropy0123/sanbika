@@ -13,7 +13,6 @@
       </el-dialog>
       <Search/>
       <Select/>
-      <el-button type="primary" icon="el-icon-search" @click="$store.dispatch('searchSongs')">Search</el-button>
       <el-card 
         v-for="song in songs" 
         :key="song.sys.id"
@@ -27,19 +26,8 @@
         layout="prev, pager, next"
       />
       <el-button :plain="true" @click="open">Show message</el-button>
+      <el-button type="primary" icon="el-icon-refresh" @click="$store.dispatch('fetchSongs')">Reset</el-button>
 
-      <el-card 
-        v-for="song in songs" 
-        :key="song.sys.id"
-        class="box-card"
-      >
-        <h2>{{ song.fields.title }}</h2>
-        <span class="root-key">Root Key：{{ song.fields.keyCode }}</span>
-        <vue-markdown
-          :source="song.fields.lyrics"
-          class="lyrics"
-        />
-      </el-card>
     </div>
     
   </section>

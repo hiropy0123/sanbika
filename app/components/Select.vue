@@ -1,8 +1,8 @@
 <template>
   <el-select 
     v-model="value" 
-    placeholder="Select Key"
-    @change="value => $store.commit('setKey', value)"
+    placeholder="Select Chord"
+    @change="value => $store.dispatch('searchSongsByChord', value)"
   >
     <el-option
       v-for="item in options"

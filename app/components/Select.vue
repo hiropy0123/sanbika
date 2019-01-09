@@ -2,12 +2,14 @@
   <el-select 
     v-model="value" 
     placeholder="Select Key"
+    @change="value => $store.commit('setKey', value)"
   >
     <el-option
       v-for="item in options"
       :key="item.value"
       :label="item.label"
-      :value="item.value"/>
+      :value="item.value"
+    />
   </el-select>
 </template>
 

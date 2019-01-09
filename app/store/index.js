@@ -8,12 +8,14 @@ export default () =>
   new Vuex.Store({
     state: {
       songs: [],
-      total: 0
+      total: 0,
+      selectedKey: String
     },
 
     getters: {
       songs: state => state.songs,
-      total: state => state.total
+      total: state => state.total,
+      selectedKey: state => state.selectedKey
     },
 
     mutations: {
@@ -22,6 +24,9 @@ export default () =>
       },
       setTotal(state, payload) {
         state.total = payload
+      },
+      setKey(state, payload) {
+        state.selectedKey = payload
       }
     },
 
@@ -31,6 +36,18 @@ export default () =>
           .getEntries({
             content_type: 'song',
             order: '-sys.createdAt'
+          })
+          .then(entries => {
+            commit('setSongs', entries.items)
+          })
+      },
+
+      async searchSongs({ commit }) {
+        await client
+          .getEntries({
+            content_type: 'song',
+            order: '-sys.createdAt',
+            'fields.keyCode': this.state.selectedKey
           })
           .then(entries => {
             commit('setSongs', entries.items)

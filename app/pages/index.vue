@@ -13,15 +13,13 @@
       </el-dialog>
       <Search/>
       <Select/>
-      <el-button type="primary" icon="el-icon-search">Search</el-button>
-      <el-card class="box-card">
-        <nuxt-link to="/">賛美タイトル</nuxt-link> 
-      </el-card>
-      <el-card class="box-card">
-        <nuxt-link to="/">賛美タイトル</nuxt-link> 
-      </el-card>
-      <el-card class="box-card">
-        <nuxt-link to="/">賛美タイトル</nuxt-link> 
+      <el-button type="primary" icon="el-icon-search" @click="$store.dispatch('searchSongs')">Search</el-button>
+      <el-card 
+        v-for="song in songs" 
+        :key="song.sys.id"
+        class="box-card"
+      >
+        <nuxt-link :to="`/${song.fields.title}`">{{ song.fields.title }}</nuxt-link> 
       </el-card>
       <el-pagination
         :total="1000"
